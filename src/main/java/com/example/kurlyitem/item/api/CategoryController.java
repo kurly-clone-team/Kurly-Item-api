@@ -2,6 +2,7 @@ package com.example.kurlyitem.item.api;
 
 import com.example.kurlyitem.item.dto.ItemSimpleDto;
 import com.example.kurlyitem.item.service.CategoryService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/categories")
+@Tag(name = "Category API", description = "카테고리 관련 API 제공")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -30,11 +32,11 @@ public class CategoryController {
         return ResponseEntity.ok(itemSimpleDtos);
     }
 
-    @GetMapping("/{categoryId}/{pageNumber}/{lowPrice}/{highPrice}")
-    public ResponseEntity<List<ItemSimpleDto>> findAllItemByFilteredPrice(@PathVariable Long categoryId, @PathVariable Long pageNumber,
+    @GetMapping("/{categoryKey}/{pageNumber}/{lowPrice}/{highPrice}")
+    public ResponseEntity<List<ItemSimpleDto>> findAllItemByFilteredPrice(@PathVariable String categoryKey, @PathVariable Long pageNumber,
                                                                       @PathVariable Long lowPrice, @PathVariable Long highPrice
     ) {
-        List<ItemSimpleDto> itemSimpleDtos = categoryService.findAllItemByFilteredPrice(categoryId, pageNumber, lowPrice, highPrice);
+        List<ItemSimpleDto> itemSimpleDtos = categoryService.findAllItemByFilteredPrice(categoryKey, pageNumber, lowPrice, highPrice);
         return ResponseEntity.ok(itemSimpleDtos);
     }
 }

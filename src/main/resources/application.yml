@@ -10,3 +10,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/kurly_item
     username: root
+
+springdoc:
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  packages-to-scan: com.example.kurlyitem.item.api
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
