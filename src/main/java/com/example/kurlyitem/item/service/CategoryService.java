@@ -34,7 +34,7 @@ public class CategoryService {
                 .toList();
     }
 
-    public List<ItemSimpleDto> findAllItemByFilteredPrice(Long categoryId, Long pageNumber, Long lowPrice, Long highPrice) {
+    public List<ItemSimpleDto> findAllItemByFilteredPrice(String categoryKey, Long pageNumber, Long lowPrice, Long highPrice) {
         return null;
     }
 }
